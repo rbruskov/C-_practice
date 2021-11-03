@@ -101,22 +101,35 @@ void evennum(int[] name)
     }
 }
 
-//упорядовачивание массива
+//сортировка массива по возрастанию или убыванию
 
 int[] arrayorder(int[] name)
 {
     int max = name[0];
+    Console.WriteLine("введите (1) для формирования массива по возрастанию и для убывания - (2)");
+    int sel=Convert.ToInt32(Console.ReadLine());
     for (int i = 0; i < name.Length; i++)
     {
         for (int j = 0; j < name.Length; j++)
         {
-            if (name[i] < name[j])
+            if (sel == 1)
+            {
+                if (name[i] < name[j]) //для сортировки по убыванию нужно поменять знак "<" на ">"
+                {
+                    max = name[j];
+                    name[j] = name[i];
+                    name[i] = max;
+                }
+                
+            }
+            else
+            if (name[i] > name[j]) //для сортировки по убыванию нужно поменять знак "<" на ">"
             {
                 max = name[j];
                 name[j] = name[i];
                 name[i] = max;
             }
-        }
+         }
 
     }
     return name;
