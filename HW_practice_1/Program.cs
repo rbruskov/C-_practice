@@ -93,12 +93,33 @@ void evennum(int[] name)
     Console.WriteLine("четные элементы массива:");
     while (index < length)
     {
-       if(name[index]%2!=1)
-       {
-       Console.WriteLine(name[index]); 
-       }
+        if (name[index] % 2 != 1)
+        {
+            Console.WriteLine(name[index]);
+        }
         index++;
     }
+}
+
+//упорядовачивание массива
+
+int[] arrayorder(int[] name)
+{
+    int max = name[0];
+    for (int i = 0; i < name.Length; i++)
+    {
+        for (int j = 0; j < name.Length; j++)
+        {
+            if (name[i] < name[j])
+            {
+                max = name[j];
+                name[j] = name[i];
+                name[i] = max;
+            }
+        }
+
+    }
+    return name;
 }
 
 //тело программы
@@ -117,11 +138,13 @@ Console.WriteLine("Длина массива: {0}, диапазон [{1} : {2})"
 
 int[] arr = createarray(arrnum, indexmin, indexmax);
 showarray(arr);
-fromDowntoUp(arr);
-int max = medium(arr);
-DownUpmed(arr, max);
-evennum(arr);
+//fromDowntoUp(arr);
+//int max = medium(arr);
+//DownUpmed(arr, max);
+//evennum(arr);
 
+int[] sortarr = arrayorder(arr);
+showarray(arr);
 // int count = 10;
 // int[] arr = createarray(count);
 // Console.WriteLine(arr[0]);
