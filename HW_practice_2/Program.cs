@@ -17,7 +17,7 @@
 // 14. Найти третью цифру числа или сообщить, что её нет
 
 
-//ввод число
+//ввод числа вручную
 
 int imput()
 {
@@ -112,7 +112,7 @@ string replace (string text, int position, string newvalue)
 }
 
 
-//Тело программы
+///////////////////////////////////Тело программы/////////////////////////////////////////////////////
 Console.Clear();
 Console.WriteLine("Введите номер задачи из списка");
 int num = Convert.ToInt32(Console.ReadLine());
@@ -181,6 +181,12 @@ if (num == 4) //Найти максимальное из трех(N) чисел
     int[] array = newarray(Narray);
     int max = maxNumberarray(array);
 }
+
+if (num == 5) //Функция y=f(x) 
+{
+    Console.WriteLine("в работе, запустите программу еще раз");
+}
+
 
 if (num == 6) //Выяснить является ли число чётным
 {
