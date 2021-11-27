@@ -75,8 +75,15 @@ void showarray(int[] name)
 
 
 Console.Clear();
+
 Console.WriteLine("Введите номер задачи из списка");
 int num = Convert.ToInt32(Console.ReadLine());
+
+while (num < 15 || num > 30)
+{
+    Console.WriteLine("Введите номер задачи из списка от 15 до 25");
+    num = Convert.ToInt32(Console.ReadLine());
+}
 
 Console.Write("Вы выбрали задачу №: {0} - ", num);
 
@@ -182,17 +189,171 @@ if (num == 21) // 21. Программа проверяет пятизначно
     int[] array = newarray(index);
     showarray(array);
 
-    for (int i = 0; i < array.Length/2; i++)
-        if (array[i] != array[array.Length -1- i])
+    for (int i = 0; i < array.Length / 2; i++)
+        if (array[i] != array[array.Length - 1 - i])
         {
-          i= array.Length/2;
-          Console.WriteLine(" не палиндром");
+            i = array.Length / 2;
+            Console.WriteLine(" не палиндром");
         }
-        else 
+        else
         {
-            if (i==array.Length/2-1)
-            Console.WriteLine("палиндром");
-        }  
+            if (i == array.Length / 2 - 1)
+                Console.WriteLine("палиндром");
+        }
+
+
+}
+
+if (num == 22) // Найти расстояние между точками в пространстве 2D/3D
+{
+    Console.WriteLine("Найти расстояние между точками в пространстве 2D/3D");
+    int x1 = imput();
+    int y1 = imput();
+    int z1 = imput();
+    int x2 = imput();
+    int y2 = imput();
+    int z2 = imput();
+
+    //метод вычисления координат и возведения в квадрат
+    int length(int a, int b)
+    {
+        int dlinna = (a - b) * (a - b);
+        return dlinna;
+    }
+    int x = length(x1, x2);
+    int y = length(y1, y2);
+    int z = length(z1, z2);
+    double AB = Math.Sqrt(x + y + z);
+    Console.WriteLine("{0} {1} {2}", x, y, z);
+    Console.WriteLine(AB);
+}
+
+
+if (num == 23) //Показать таблицу квадратов чисел от 1 до N
+{
+    Console.WriteLine("Показать таблицу квадратов чисел от 1 до N");
+    int index = imput();
+    int[] array = new int[index];
+
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = (i + 1) * (i + 1);
+    }
+    showarray(array);
+}
+
+if (num == 24) //Показать кубы чисел от 1 до N
+{
+    Console.WriteLine("Показать кубы чисел от 1 до N");
+    int index = imput();
+    int[] array = new int[index];
+
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = (i + 1) * (i + 1) * (i + 1);
+    }
+    showarray(array);
+}
+
+if (num == 25) //Найти сумму чисел от 1 до А
+{
+    Console.WriteLine("Найти сумму чисел от 1 до А");
+    int index = imput();
+    int[] array = new int[index];
+    int s = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = i + 1;
+        s = s + array[i];
+    }
+    showarray(array);
+    Console.WriteLine(s);
+}
+
+if (num == 26) //Возведите число А в натуральную степень B используя цикл
+{
+    Console.WriteLine("Возведите число А в натуральную степень B используя цикл");
+    int A = imput();
+    int index = imput();
+    int[] array = new int[index];
+    int s = 1;
+    for (int i = 0; i < array.Length; i++)
+    {
+        s = s * A;
+        array[i] = s;
+    }
+    showarray(array);
+    Console.WriteLine(s);
+}
+
+if (num == 27) //Определить количество цифр в числе
+{
+    Console.WriteLine("Определить количество цифр в числе");
+    Console.WriteLine("Введите число");
+    string number = Console.ReadLine();
+    Console.WriteLine(number.Length);
+}
+
+if (num == 28) //Подсчитать сумму цифр в числе
+{
+    Console.WriteLine("Подсчитать сумму цифр в числе");
+    Console.WriteLine("Введите число");
+    string number = Console.ReadLine();
+    int s = 0;
+    int[] array = new int[number.Length];
+    
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i]=Convert.ToInt32(number[i])-48;
+        s=s+array[i];
+    }
+    showarray(array);
+    Console.WriteLine(s);
+}
+
+if (num == 29) //Написать программу вычисления произведения чисел от 1 до N
+{
+    Console.WriteLine("Написать программу вычисления произведения чисел от 1 до N");
+    int index = imput();
+    int[] array = new int[index];
+    int s = 1;
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i]=i+1;
+    }
+    for (int i = 0; i < array.Length-1; i++)
+    {
+        s=s*array[i+1];
+    
+    }
+    showarray(array);
+    Console.WriteLine(s);
+}
+
+if (num == 30) //Показать кубы чисел от 1 до N
+{
+    Console.WriteLine("Показать кубы чисел от 1 до N");
+    int index = imput();
+    int[] array = new int[index/2];
+    int[] array1 = new int[index];
+    for (int i = 0; i < array.Length; i++)
+    {
+             
+        array[i] = (i+i+2) * (i+i+2) * (i+i+2);
         
-        
+    //     if (array[i]%2!=0)
+    // {
+    //     array[i]=0;
+    // }
+     
+
+    }
+    for (int i = 0; i < array1.Length; i++)
+    {
+             
+        array1[i] = (i+1) * (i+1) * (i+1);
+    }    
+    showarray(array1);
+    showarray(array);
+    
 }
