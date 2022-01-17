@@ -3,7 +3,7 @@
 //Первоначальный массив можно ввести с клавиатуры, либо сгенерировать случайным образом. При решении не
 //рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
 
-
+// *******************Функции:****************************
 //ввод числа вручную
 string imput()
 {
@@ -13,7 +13,6 @@ string imput()
 }
 
 // проверка правильности ввода данных пользователем
-
 string correctimput (int typedata, string userimp)
 {
 int a = typedata;
@@ -30,41 +29,37 @@ return correct;
 }
 
 // определение типа вводимых данных
-
 int whatuserEntered(string userimp) 
 {
 string userimput=userimp;
 int tempInt;
 decimal tempDec;
-int a=0;
+int TypeofDataImput=0;
 int usernumber=0;
 
 if(int.TryParse(userimput, out tempInt))
-  {
+   {
     //   Console.WriteLine("целое число"); 
-      a=1;
-  
-  }
+      TypeofDataImput=1;
+    }
 else 
 if (decimal.TryParse(userimput, out tempDec))
- {
-     Console.WriteLine("десятичное");
- a=2;
- }
+   {
+     Console.WriteLine("введено десятичное");
+     TypeofDataImput=2;
+    }
 else 
-{
-Console.WriteLine("символы");
-a=3;
-}
-return a; 
+    { 
+    Console.WriteLine("введены символы");
+    TypeofDataImput=3;
+    }
+return TypeofDataImput; 
 
 }
 
 // формирование массива случайными числами заданного интервала  
-
 int[] createarray(int count, int indexmin, int indexmax)
 {
-
     int index = 0;
     int[] array = new int[count];
     while (index < count)
@@ -90,44 +85,37 @@ void showarray(int[] name,int length, string Text)
     Console.WriteLine();
 }
 
-//?**************тело программы***************
+//**************тело программы***************
 
 Console.Clear();
 Console.WriteLine("программа из массива случайных целых чисел формирует массив из четных чисел");
 
 Console.WriteLine("Введите длину массива для случайных чисел");
 string arraylength = imput();
- // проверка корректного ввода данных 
-int a = whatuserEntered(arraylength); //определение типа введенных данных
-// Console.WriteLine(a);
-string arraylengthcorrect = correctimput(a,arraylength); //повтор ввода,если данные введены неверно
-int arraylengthconvert=Convert.ToInt32(arraylengthcorrect);
-//Console.WriteLine(arraylengthconvert);
+int arraylengthconvert=Convert.ToInt32(correctimput(whatuserEntered(arraylength),arraylength));  // проверка корректного ввода данных и перевод строки в число
+// int a = whatuserEntered(arraylength); определение типа введенных данных
+// string arraylengthcorrect = correctimput(a,arraylength); повтор ввода,если данные введены неверно
+Console.WriteLine();
 
 if (arraylengthconvert<0) // проверка на случай ввода отрицательного значения
 {
     arraylengthconvert=arraylengthconvert*(-1);
     Console.WriteLine("вы ввели отрицательное значение данные будут взяты по модулю [{0}]" , arraylengthconvert);
+    Console.WriteLine();
 }
-//Console.WriteLine(arraylengthconvert);
 
 Console.WriteLine("введите значение начала для диапазона случайных чисел");
 string Nmin = imput();
-// проверка корректного ввода данных
-int b = whatuserEntered(Nmin);
-// Console.WriteLine(a);
-string Nmincorrect = correctimput(b,Nmin);
-int Nminconvert=Convert.ToInt32(Nmincorrect);
-//Console.WriteLine(Nminconvert);
+int Nminconvert=Convert.ToInt32(correctimput(whatuserEntered(Nmin),Nmin)); // проверка корректного ввода данных и перевод строки в число
+// int b = whatuserEntered(Nmin);
+// string Nmincorrect = correctimput(b,Nmin);
 
 Console.WriteLine("Введите конечное значение для диапазона");
 string Nmax = imput();
-//проверка корректного ввода данных
+int Nmaxconvert=Convert.ToInt32(correctimput(whatuserEntered(Nmax),Nmax)); //проверка корректного ввода данных и перевод строки в число
 // int c = whatuserEntered(Nmax);
-// Console.WriteLine(c);
 // string Nmaxcorrect = correctimput(c,Nmax);
-int Nmaxconvert=Convert.ToInt32(correctimput(whatuserEntered(Nmax),Nmax)); //Nmaxcorrect);
-//Console.WriteLine(Nmaxconvert);
+ 
 if (Nmaxconvert<Nminconvert) // проверка ввода корректного диапазона
 {
 int temp = 0;
@@ -137,11 +125,11 @@ Nminconvert =temp;
 Console.WriteLine("введено значение меньше начала диапазона, выбранный диапазон скорректирован [{0}:{1}]",Nminconvert,Nmaxconvert);
 }
 
-
-// формирование массива случайных чисел по введенным значениям
+// формирование массива случайных чисел по введенным значениям и пустого массива под четные числа
 int[] array = createarray(arraylengthconvert, Nminconvert, Nmaxconvert);
 int[] arrayeven = createarray(arraylengthconvert, 0, 0);
-int j = 0;
+int  CountArrayEven = 0;
+Console.WriteLine();
 showarray(array,arraylengthconvert,"массив случайных чисел сформирован");
 
 //формирование масиива из четных данных
@@ -149,8 +137,9 @@ for (int i = 0; i < arraylengthconvert; i++)
 {
     if (array[i]%2==0)
     {
-        arrayeven[j]=array[i];
-        j++;
+        arrayeven[CountArrayEven]=array[i];
+        CountArrayEven++;
     }
 }
-showarray(arrayeven,j,"массив из четных чисел сформирован"); 
+showarray(arrayeven,CountArrayEven,"массив из четных чисел сформирован"); 
+Console.WriteLine();
